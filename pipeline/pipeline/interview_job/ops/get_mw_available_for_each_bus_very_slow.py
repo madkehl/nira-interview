@@ -26,7 +26,7 @@ def get_mw_available_for_each_bus_very_slow(df_bus_numbers):
 
 def _run_slow_calculation_for_bus(bus_number):
     get_dagster_logger().info(f"Starting calculation for bus {bus_number}")
-    sleep(1)
+    sleep(300)
     get_dagster_logger().info(f"Finished calculation for bus {bus_number}")
 
     return _DUMMY_BUS_NUMBER_TO_MW_AVAILABLE[bus_number]
