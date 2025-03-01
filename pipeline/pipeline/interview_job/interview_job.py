@@ -9,14 +9,9 @@ from pipeline.interview_job.ops.get_mw_available_for_each_bus_very_slow import (
 from pipeline.interview_job.ops.raw_buses_to_run import raw_buses_to_run
 from pipeline.interview_job.output.output_interview_job import output_interview_job
 
-
-_OUTPUT_CSV_TO_READ = "pipeline/interview_job/output/output.csv"
-absolute_output_path = os.path.abspath(_OUTPUT_CSV_TO_READ)
-
-
 @job
 def interview_job():
-    existing_buses = get_existing_bus_info(filepath=absolute_output_path)
+    existing_buses = get_existing_bus_info()
 
     df_raw_buses_to_run = raw_buses_to_run(ran_prev=existing_buses)
 
