@@ -13,9 +13,6 @@ _DUMMY_BUS_NUMBER_TO_MW_AVAILABLE = {
 
 @op
 def get_mw_available_for_each_bus_very_slow(df_bus_numbers):
-    if df_bus_numbers is None:
-        get_dagster_logger().info("Input is None, skipping this step.")
-        return None
 
     df_bus_numbers["mw_available"] = df_bus_numbers.apply(
         lambda row: _run_slow_calculation_for_bus(row["bus_number"]), axis=1
@@ -26,7 +23,7 @@ def get_mw_available_for_each_bus_very_slow(df_bus_numbers):
 
 def _run_slow_calculation_for_bus(bus_number):
     get_dagster_logger().info(f"Starting calculation for bus {bus_number}")
-    sleep(300)
+    sleep(1)
     get_dagster_logger().info(f"Finished calculation for bus {bus_number}")
 
     return _DUMMY_BUS_NUMBER_TO_MW_AVAILABLE[bus_number]
