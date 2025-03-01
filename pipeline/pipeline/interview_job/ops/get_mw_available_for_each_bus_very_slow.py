@@ -13,6 +13,7 @@ _DUMMY_BUS_NUMBER_TO_MW_AVAILABLE = {
 
 @op
 def get_mw_available_for_each_bus_very_slow(df_bus_numbers):
+
     df_bus_numbers["mw_available"] = df_bus_numbers.apply(
         lambda row: _run_slow_calculation_for_bus(row["bus_number"]), axis=1
     )
